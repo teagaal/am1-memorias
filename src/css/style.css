@@ -1,4 +1,17 @@
-/* Very Smol Reset */
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
+
+@keyframes typing {
+  from {
+      width: 0;
+  }
+}
+
+:root {
+  --bg-color: #1b1c30;
+  --fg-color: #f46c95;
+  font-size: 16px;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -8,26 +21,30 @@
 
 body {
   display: flex;
-  flex-direction: column;
   min-height: 100vh;
   padding: 5vh clamp(1rem, 5vw, 3rem) 1rem;
-  font-family: system-ui, sans-serif;
+  font-family: 'Source Code Pro', monospace;
   line-height: 1.5;
-  color: #222;
+  color: var(--fg-color);
+  background-color: var(--bg-color);
 }
 
 body > * {
-  --layout-spacing: max(8vh, 3rem);
+  --layout-spacing: max(8vh, 2rem);
 
   width: 100%;
-  max-width: 70ch;
-  margin-left: auto;
-  margin-right: auto;
+}
+
+header {
+  max-width: 180px;
+  margin-right: var(--layout-spacing);
+  border-right: 1px solid white;
 }
 
 nav ul {
   list-style: none;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   padding: 0;
   margin-left: -1rem;
@@ -45,19 +62,14 @@ nav [aria-current="page"] {
 header,
 main,
 main > * + * {
-  margin-top: var(--layout-spacing);
+  margin-top: 2em;
 }
 
-body > footer {
-  margin-top: auto;
-  padding-top: var(--layout-spacing);
-}
-
-body > footer div {
-  border-top: 1px solid #ccc;
-  padding-top: 0.5em;
-  font-size: 0.9rem;
-  color: #767676;
+article {
+  font-size: 1rem;
+  line-height: 2;
+  font-weight: bold;
+  width: 80ch;
 }
 
 article * + * {
@@ -65,6 +77,13 @@ article * + * {
 }
 
 /* Typography */
+h1 {
+  width: 26ch;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 3s steps(26, end);
+}
+
 :is(h1, h2, h3) {
   line-height: 1.2;
 }
@@ -78,7 +97,7 @@ article * + * {
 }
 
 a {
-  color: navy;
+  color: white;
   text-underline-offset: 0.08em;
 }
 
@@ -91,11 +110,7 @@ a:focus {
 
 article img {
   display: block;
-  width: 100%;
-  min-height: 20rem;
-  max-height: 40vh;
   object-fit: cover;
-  margin: 2rem auto;
 }
 
 @supports (aspect-ratio: 1) {
@@ -122,4 +137,16 @@ blockquote {
   border-left: 3px solid rgba(0, 0, 0, 0.35);
   background-color: rgba(0, 0, 0, 0.05);
   border-radius: 0 0.25rem 0.25rem 0;
+}
+
+
+.intro {
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-image: 
+      linear-gradient(
+        currentColor 20%, 
+        transparent
+      );
+  -webkit-text-fill-color: rgba(255,255,255,0.01);
 }
